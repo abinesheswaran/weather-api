@@ -1,0 +1,28 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  link(href='https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap' rel='stylesheet')
+  link(rel='stylesheet' href='css/style.css')
+  title Weather Api
+#current.wrapper
+  nav
+    button#locateBtn W
+    button#unitBtn H
+  .input-box
+    input.searchbox(type='text' placeholder='Enter the city name' required='')
+    button.search-btn Search
+  .content 
+    -if(data)
+      h1.location=`${data.searchQuery} ${data.weather.country}`
+      -var date=new Date().toUTCString();
+        h2.date=`${data.weather.main} ${date.split(' ').slice(0,4).join(' ')}`
+      p.temp=data.weather.temp
+      p.conditions=data.weather.conditions
+    -else 
+      h1.location Enter right city name (:
+   
+footer
+  p Created by Abinesh as a demo project for rezolve.ai
+script(src='js/index.js')
