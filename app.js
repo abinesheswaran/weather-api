@@ -53,7 +53,6 @@ app.use(
 );
 app.use(compression());
 
-// 3) ROUTES
 app.use('/', viewRoutes);
 app.use('/weather', weatherRoutes);
 

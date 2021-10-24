@@ -40,13 +40,6 @@ exports.getOverview = catchAsync(async(req,res,next)=>{
 });
 
 exports.getAll = catchAsync(async(req,res,next)=>{
-
-  if(req.query.createdAt) {
-    // const event =req.query.createdAt;
-    // if(!event.lte){ event.lte=new Date(Date.now()).toISOString()}
-    // else{event.lte=new Date(event.lte)}
-    // req.query.createdAt = {"gte":new Date(event.gte),"lte":event.lte};
-  }
   let queryStr = JSON.stringify({...req.query});
   queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`)
   const query = Weather.find(JSON.parse(queryStr)).sort('-createdAt');
